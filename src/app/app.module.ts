@@ -32,7 +32,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts'; 
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component'; 
-import { EspaceAdminModule } from './espace-admin (1)/espace-admin.module'; 
+
 import { from } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuardService } from './guards/auth-guard.service';
@@ -82,7 +82,7 @@ export const routes: Routes = [
     TabsModule.forRoot(),
     ChartsModule,
     RouterModule.forRoot(routes),
-    EspaceAdminModule,
+    
     MatIconModule,
     BrowserAnimationsModule
 

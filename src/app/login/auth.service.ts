@@ -35,9 +35,9 @@ export class AuthService {
     return this.http.post<string>(this.signupUrl, info, httpOptions);
   }
 
-  logout() {
+  /*logout() {
     this.storageService.signOut();
     this.router.navigate['../login'];
 
-  }
+  }*/
 }
