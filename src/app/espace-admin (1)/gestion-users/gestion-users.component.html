@@ -1,0 +1,334 @@
+<div class="container">
+  <div class="card text-left">
+    <div class="card-header text-light">Gestion des Utilisateurs 
+      <button mat-raised-button color="primary"
+        class="float-right" (click)="openModal(template)">
+        <mat-icon>add</mat-icon>
+        Ajouter
+      </button> </div>
+
+    <div class=" card-body">
+
+      <p>
+        <ngb-alert *ngIf="UserAdded" [dismissible]="true">
+          {{UserAddedMessage}}
+        </ngb-alert>
+      </p>
+      <form>
+
+        <div class="form-group form-inline">
+          <input class="form-control ml-2" type="text" [formControl]="filter" />
+        </div>
+      </form>
+
+      <div style="overflow-x:auto;">
+        <table width="100%" class="table table-hovered">
+          <thead>
+            <tr>
+
+              <th scope="col" sortable="cin" (sort)="onSort($event)">Cin</th>
+              <th scope="col" sortable="nom" (sort)="onSort($event)">Nom et prenom</th>
+              <th scope="col" sortable="population" (sort)="onSort($event)">Email</th>
+           
+              <th scope="col" sortable="population" (sort)="onSort($event)">Adresse</th>
+              <th scope="col" sortable="population" (sort)="onSort($event)">Telephone</th>
+              <th scope="col" sortable="population" (sort)="onSort($event)">Statut</th>
+              <th scope="col" sortable="population" (sort)="onSort($event)">Profil</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let user of myusers">
+              <th scope="row">{{ user.cin }}</th>
+
+              <td>
+                <ngb-highlight [result]="user.nom" [term]="filter.value"></ngb-highlight>
+              </td>
+              <td>
+                <ngb-highlight [result]="user.email" [term]="filter.value"></ngb-highlight>
+              </td>
+            
+              <td>
+                <ngb-highlight [result]="user.adresse" [term]="filter.value"></ngb-highlight>
+              </td>
+              <td>
+                <ngb-highlight [result]="user.telephone" [term]="filter.value"></ngb-highlight>
+              </td>
+              <td>
+                <ngb-highlight [result]="user.statut" [term]="filter.value"></ngb-highlight>
+              </td>
+              <td>
+                <ngb-highlight [result]="user.roles[0].name" [term]="filter.value"></ngb-highlight>
+              </td>
+              <td>
+                <button class="btn btn-warning btn-xs" (click)="openModalEdit(edittemplate,user)">
+                  <mat-icon>edit</mat-icon>
+
+                </button>
+                <button class="btn btn-danger btn-xs" (click)="onDelete(user)">
+                  <mat-icon>delete</mat-icon>
+
+                </button>
+                <button class="btn btn-info btn-xs"   (click)="openModalview(viewtemplate,user)">
+                 
+                  <mat-icon>assignment_ind</mat-icon>
+                
+
+                </button>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+        </ngb-pagination>
+        <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+          <option [ngValue]="5">5 par page</option>
+          <option [ngValue]="10">10 par page</option>
+          <option [ngValue]="15">15 items per page</option>
+        </select>
+      </div>
+
+      <ng-template #template>
+        <div class="modal-header">
+          <h3 class="modal-title pull-left text-light">Nouvel utilisateur</h3>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form #AddUserForm="ngForm" (submit)="OnAddUser(AddUserForm.value)">
+            <div class="form-group">
+
+              <input type="text" name="cin" class="form-control" placeholder="Numero CIN" [(ngModel)]="cin" required>
+
+            </div>
+            <div class="form-group">
+
+              <input type="text" name="nom" id="" class="form-control" placeholder="Nom" [(ngModel)]="nom" required>
+
+            </div>
+            <div class="form-group">
+
+              <input type="text" name="prenom" id="" class="form-control" placeholder="Prenom" [(ngModel)]="prenom"
+                required>
+ 
+                
+            </div>
+            <div class="form-group">
+
+              <input type="text" name="email" id="" class="form-control" placeholder="Email" [(ngModel)]="email"
+                required>
+
+            </div>
+            
+            <div class="form-group">
+             
+              
+              <select name="adresse" id=""   class="form-control" ngModel required>
+                <option value="" disabled selected>Adresse</option>
+                <option value="Ariana">Ariana</option>
+                <option value="Béja">Béja</option>
+                <option value="Ben Arous">Ben Arous</option>
+                <option value="Bizerte">Bizerte</option>
+                <option value="Gabès">Gabès</option>
+                <option value="Gafsa">Gafsa</option>
+                <option value="Jendouba">Jendouba</option>
+                <option value="Kairouan">Kairouan</option>
+                <option value="Kasserine">Kasserine</option>
+                <option value="Kébili">Kébili</option>
+                <option value="Le Kef">Le Kef</option>
+                <option value="Mahdia">Mahdia</option>
+                <option value="La Manouba">La Manouba</option>
+                <option value="Médenine">Médenine</option>
+                <option value="Monastir">Monastir</option>
+                <option value="Nabeul">Nabeul</option>
+                <option value="Sfax">Sfax</option>
+                <option value="Sidi Bouzid">Sidi Bouzid</option>
+                <option value="Siliana">Siliana</option>
+                <option value="Sousse">Sousse</option>
+                <option value="Tataouine">Tataouine</option>
+                <option value="Tozeur">Tozeur</option>
+                <option value="Tunis">Tunis</option>
+                <option value="Zaghouan">Zaghouan</option>
+
+
+              </select>
+
+            </div>
+
+            <div class="form-group">
+
+              <input type="text" name="username" id="" class="form-control" placeholder="UserName"
+                [(ngModel)]="username" required>
+
+            </div>
+
+            <div class="form-group">
+
+              <select class="form-control" name="statut" id=""   ngModel required>
+                <option value="" disabled selected>Statut</option>
+                <option value="active">actif</option>
+                <option value="Non actif">non actif</option>
+              
+              </select>
+
+              
+            </div>
+
+            <div class="form-group">
+
+              <input type="text" name="telephone" id="" class="form-control" [(ngModel)]="telephone" placeholder="Telephone">
+
+            </div>
+            <div class="form-group">
+
+              <input type="password" name="password" id="" class="form-control" placeholder="Mot de passe"
+                [(ngModel)]="password" required>
+
+            </div>
+            <div class="form-group">
+
+              <select class="form-control" name="role" id="" ngModel required>
+                <option value="" disabled selected>Profil</option>
+                <option value="chef">chef_equipe</option>
+                <option value="admin">administrateur</option>
+                <option value="technicien">technicien</option>
+              </select>
+
+            </div>
+            <div class="form-group">
+              <button mat-raised-button color="primary" class="float-right" type="submit">
+                Ajouter
+              </button>
+
+
+            </div>
+
+          </form>
+        </div>
+      </ng-template>
+
+    </div>
+    <ng-template #edittemplate>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Update Demande</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    
+    
+      <div class="modal-body">
+        <form #AddUserForm="ngForm" (submit)="OnUpdate(updateUserForm.value)">
+          <div class="form-group">
+
+            <input type="text" name="forEdit.cin" class="form-control" placeholder="Numero CIN" [(ngModel)]="forEdit.cin">
+
+          </div>
+          <div class="form-group">
+
+            <input type="text" name="forEdit.nom" id="" class="form-control" placeholder="Nom" [(ngModel)]="forEdit.nom" required>
+
+          </div>
+          <div class="form-group">
+
+            <input type="text" name="forEdit.prenom" id="" class="form-control" placeholder="Prenom" [(ngModel)]="forEdit.prenom"
+              required>
+
+          </div>
+          <div class="form-group">
+
+            <input type="text" name="forEdit.email" id="" class="form-control" placeholder="Email" [(ngModel)]="forEdit.email"
+              required>
+
+          </div>
+          
+          <div class="form-group">
+           
+            
+       
+        
+            <select name="adresse" id="" [(ngModel)]="forEdit.adresse" class="form-control">
+              <option value="Ariana">Ariana</option>
+              <option value="Béja">Béja</option>
+              <option value="Ben Arous">Ben Arous</option>
+              <option value="Bizerte">Bizerte</option>
+              <option value="Gabès">Gabès</option>
+              <option value="Gafsa">Gafsa</option>
+              <option value="Jendouba">Jendouba</option>
+              <option value="Kairouan">Kairouan</option>
+              <option value="Kasserine">Kasserine</option>
+              <option value="Kébili">Kébili</option>
+              <option value="Le Kef">Le Kef</option>
+              <option value="Mahdia">Mahdia</option>
+              <option value="La Manouba">La Manouba</option>
+              <option value="Médenine">Médenine</option>
+              <option value="Monastir">Monastir</option>
+              <option value="Nabeul">Nabeul</option>
+              <option value="Sfax">Sfax</option>
+              <option value="Sidi Bouzid">Sidi Bouzid</option>
+              <option value="Siliana">Siliana</option>
+              <option value="Sousse">Sousse</option>
+              <option value="Tataouine">Tataouine</option>
+              <option value="Tozeur">Tozeur</option>
+              <option value="Tunis">Tunis</option>
+              <option value="Zaghouan">Zaghouan</option>
+
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+
+            <input type="text" name="forEdit.username" id="" class="form-control" placeholder="UserName"
+              [(ngModel)]="forEdit.username" >
+
+          </div>
+
+        
+
+          <div class="form-group">
+
+            <input type="password" name="forEdit.password" id="" class="form-control" placeholder="Mot de passe"
+              [(ngModel)]="forEdit.password" required>
+
+          </div>
+          <div class="form-group">
+
+            <select class="form-control" name="role" id=""  [(ngModel)]="forEdit.role" required>
+              <option value="chef">chef</option>
+              <option value="admin">admin</option>
+              <option value="technicien">technicien</option>
+            </select>
+
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success btn-block" type="submit">Modifier</button>
+            <button class="btn btn-danger btn-block" type="reset">Annuler</button>
+
+
+          </div>
+
+        </form>
+      </div>
+    </ng-template>
+    <ng-template #viewtemplate>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">hello</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+
+        </div>
+       
+        </div>
+    </ng-template>
