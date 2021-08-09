@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {CommonModule } from '@angular/common';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-
+import { AppRoutingModule } from './app-routing.module';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { HttpClientModule } from '@angular/common/http';
@@ -44,24 +44,9 @@ import {MatInputModule} from '@angular/material/input';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 
-export const routes: Routes = [
-
-
-  {
-    path: '', redirectTo: 'login',
-    pathMatch: 'full'
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-
-  {
-    path: 'admin',
-    loadChildren: './espace-admin/espace-admin.module#EspaceAdminModule'
-  }
-
+export const routes: Routes = [{ path: "", component:HomeComponent},{ path: "login", component:LoginComponent}
 ];
+
 
 
 @NgModule({
@@ -81,7 +66,7 @@ export const routes: Routes = [
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes),BrowserModule,AppRoutingModule,CommonModule,
     
     MatIconModule,
     BrowserAnimationsModule
