@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 const TOKEN_KEY = 'AuthToken';
-const USERNAME_KEY = 'AuthUserName';
-const AUTHORITIE_KEY = 'AuthAuthoritie';
+const USERNAME_KEY = 'AuthUsername';
+const AUTHORITIES_KEY = 'AuthAuthorities';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ const AUTHORITIE_KEY = 'AuthAuthoritie';
 export class TokenStorageService {
   private IsAuthenticated: boolean;
   private Role: String;
-  private role:string;
+  private roles: Array<string> = [];
   constructor() { }
 
 
@@ -44,9 +44,9 @@ export class TokenStorageService {
 
   public getRole(): string { return sessionStorage.getItem("role"); }
 
-  public saveUserName(user_name: string) {
+  public saveUsername(username: string) {
     window.sessionStorage.removeItem(USERNAME_KEY);
-    window.sessionStorage.setItem(USERNAME_KEY, user_name);
+    window.sessionStorage.setItem(USERNAME_KEY, username);
   }
 
   public saveUserId(userId: string) {
@@ -57,25 +57,25 @@ export class TokenStorageService {
   public getUserId(): string {
     return sessionStorage.getItem("userId");
   }
-  public getUserName(): string {
+  public getUsername(): string {
     return sessionStorage.getItem(USERNAME_KEY);
   }
 
-  public saveAuthoritie(authoritie: string) {
-    window.sessionStorage.removeItem(AUTHORITIE_KEY);
-    window.sessionStorage.setItem(AUTHORITIE_KEY, JSON.stringify(authoritie));
+  public saveAuthorities(authorities: string[]) {
+    window.sessionStorage.removeItem(AUTHORITIES_KEY);
+    window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
   }
 
-  public getAuthoritie(): string {
-    
+  public getAuthorities(): string[] {
+    this.roles = [];
 
     if (sessionStorage.getItem(TOKEN_KEY)) {
-      JSON.parse(sessionStorage.getItem(AUTHORITIE_KEY)).forEach(authority => {
-        this.role;
+      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach(authority => {
+        this.roles.push(authority.authority);
       });
     }
 
-    return this.role;
+    return this.roles;
   }
   
 }

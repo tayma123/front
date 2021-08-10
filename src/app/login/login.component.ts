@@ -13,12 +13,13 @@ import { GestionUsersService } from '../espace-admin (1)/gestion-users.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
   form: any = {};
   test;
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  role: string ;
+  roles: string[] = [];
   private loginInfo: AuthLoginInfo;
   USERS: User1[] = [];
   forEdit: any = {};
@@ -59,20 +60,20 @@ export class LoginComponent implements OnInit {
     console.log(this.form);
 
     this.loginInfo = new AuthLoginInfo(
-      this.form.userName,
-      this.form.passWord);
+      this.form.username,
+      this.form.password);
 
     this.authService.attemptAuth(this.loginInfo).subscribe(
       data => {
 
-        this.test = data.authoritie;
-       
+        this.test = data.authorities[0];
+
         console.log(data);
 
 
         this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUserName(data.user_name);
-        this.tokenStorage.saveAuthoritie(data.authoritie);
+        this.tokenStorage.saveUsername(data.userName);
+        this.tokenStorage.saveAuthorities(data.authorities);
         this.tokenStorage.saveRole(this.test.authority)
 
         this.isLoginFailed = false;
@@ -83,7 +84,7 @@ export class LoginComponent implements OnInit {
 
       
       // this.router.navigate(['../admin/acceuil']);
-       
+       this.router.navigate(['../app/espaceChef']);
       //this.router.navigate(['../espacett/hello']);
 
      // this.router.navigate(['../espaceclient/bienvenu']);
@@ -98,6 +99,5 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
 
 }

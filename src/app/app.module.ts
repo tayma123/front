@@ -8,7 +8,6 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-
 import { AppComponent } from './app.component';
 
 // Import containers
@@ -43,9 +42,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
+import { UsersComponent } from './users/users.component';
 
-export const routes: Routes = [{ path: "", component:HomeComponent},{ path: "login", component:LoginComponent}
-];
 
 
 
@@ -65,8 +63,8 @@ export const routes: Routes = [{ path: "", component:HomeComponent},{ path: "log
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule,
-    RouterModule.forRoot(routes),BrowserModule,AppRoutingModule,CommonModule,
+    ChartsModule
+   ,BrowserModule,AppRoutingModule,CommonModule,
     
     MatIconModule,
     BrowserAnimationsModule
