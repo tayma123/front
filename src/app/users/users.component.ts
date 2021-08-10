@@ -1,17 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+
 import { Observable } from 'rxjs';
  import { User1 } from '../models/user'; 
 import { UsersService } from '../users.service';
 import { FormsModule } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 import { Router } from '@angular/router';
 
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-
 
 
 

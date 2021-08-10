@@ -3,11 +3,11 @@
    <a class="nav-link"  (click)="onOpenModal(null, 'add')" align="right" ><button class="btn btn-danger tooltips">  Add User</button> <!-- <span class="sr-only">(current)</span>--></a>
 </div>
   <div class="container" id="main-container">
-  <div class="row">
-   <div *ngFor="let user of users" class="col-md-6 col-xl-4">
-       <div class="card m-b-30">
-          <div class="card-body row">
-          <ul class="list-group list-group-flush">
+    <div class="row">
+     <div  class="col-md-6 col-xl-4">
+        <div class="card m-b-30" *ngFor="let user of users">
+           <div class="card-body row">
+           <ul class="list-group list-group-flush">
             <li class="list-group-item"><i class="fa fa-phone float-right"></i><strong>Name:</strong>  {{user?.firstName}</li>
             <li class="list-group-item"><i class="fa fa-phone float-right"></i><strong>Prenom</strong>  {{user?.lastName}}</li>
             <li class="list-group-item"><i class="fa fa-phone float-right"></i><strong>Email:</strong> {{user?.email}}</li>
@@ -22,11 +22,16 @@
                 <a     class="btn btn-danger tooltips" (click)="onOpenModal(user, 'edit')"  data-placement="top" data-original-title="Edit">Edit<i class="fa fa-pencil"></i> </a>
                 <a     (click)="onOpenModal(user, 'delete')" class="btn btn-dark tooltips" data-placement="top" data-original-title="Delete">Delete<i class="fa fa-times"></i></a>
              </div>
+            
           </div>
+         
        </div>
+      
     </div>
+   
   </div>
-  <!-- 
+
+<!--
 <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
@@ -83,7 +88,7 @@
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="updateUserModalLabel">Edit User {{editUser?.nom}}</h5>
+            <h5 class="modal-title" id="updateUserModalLabel">Edit User {{editUser?.userName}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -92,29 +97,29 @@
             <form #editForm="ngForm">
                <div class="form-group">
                   <label for="nom">Nom</label>
-                  <input type="text" ngModel="{{editUser?.nom}}" name="nom" class="form-control" id="nom"  placeholder="Nom">
+                  <input type="text" ngModel="{{editUser?.lastName}}" name="lastName" class="form-control" id="lastName"  placeholder="Nom">
                </div>
                <div class="form-group">
-                  <label for="prenom">Prenom</label>
-                  <input type="text" ngModel="{{editUser?.prenom}}" name="prenom" class="form-control" id="prenom"  placeholder="prenom">
+                  <label for="firstName">Prenom</label>
+                  <input type="text" ngModel="{{editUser?.firstName}}" name="firstName" class="form-control" id="firstName"  placeholder="prenom">
                </div>
                
                <div class="form-group">
-                  <label for="username">Email Address</label>
-                  <input type="email" ngModel="{{editUser?.username}}" name="username" class="form-control" id="username" placeholder="username">
+                  <label for="userName">Email Address</label>
+                  <input type="text" ngModel="{{editUser?.userName}}" name="userName" class="form-control" id="userName" placeholder="username">
                </div>
                <div class="form-group">
-                  <label for="prenom">Phone</label>
-                  <input type="text" ngModel="{{editUser?.prenom}}" name="prenom" class="form-control" id="prenom" placeholder="prenom">
+                  <label for="telephone">Phone</label>
+                  <input type="number" ngModel="{{editUser?.telephone}}" name="telephone" class="form-control" id="telephone" placeholder="telephone">
                </div>
   
               <div class="form-group">
-                 <label for="password">Password</label>
-                 <input type="text" ngModel="{{editUser?.password}}" name="password" class="form-control" id="password" placeholder="password">
+                 <label for="passWord">Password</label>
+                 <input type="text" ngModel="{{editUser?.passWord}}" name="password" class="form-control" id="passWord" placeholder="password">
               </div>
               <div class="form-group">
                  <label for="dateNaissance">Date de naissance</label>
-                 <input type="number" ngModel="{{editUser?.dateNaissance}}" name="dateNaissance" class="form-control" id="dateNaissance" placeholder="id">
+                 <input type="email" ngModel="{{editUser?.email}}" name="email" class="form-control" id="email" placeholder="id">
               </div>
               <div class="form-group">
                  <label for="role">Role</label>
@@ -146,7 +151,7 @@
                <p>Are you sure you want to delete User{{deleteUser?.userName}}?</p>
                <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                  <button (click)="onDeleteUser(deleteUser?.username)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                  <button (click)="onDeleteUser(deleteUser?.userName)" class="btn btn-danger" data-dismiss="modal">Yes</button>
                </div>
             </div>
          </div>
