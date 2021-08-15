@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+  <button onclick=" document.getElementById('mySidebar').style.display = 'none'" class="w3-bar-item w3-large"><strong >Close</strong> &times;</button>
+  <a routerLink="/" class="w3-bar-item w3-button"> <strong>Home</strong></a>
+  <a routerLink="/users" class="w3-bar-item w3-button"><strong>Users</strong></a>
+  <a routerLink="/login" class="w3-bar-item w3-button"><strong>Login</strong></a>
+</div>
+
+<!-- Page Content -->
+<div class="w3-teal">
+  <button class="w3-button w3-teal w3-xlarge" onclick=" document.getElementById('mySidebar').style.display = 'block'" ><img src="assets/menu.png" class="img"></button>
+
+</div>
+
+<div>
+   <a class="nav-link"  (click)="onOpenModal(null, 'add')" align="right">Add User <span class="sr-only">(current)</span></a>
+</div>
+
+<div class="container" id="main-container">
+    <div class="row">
+     <div *ngFor="let user of users" class="col-md-6 col-xl-6">
+         <div class="card m-b-30">
+            <div class="card-body row">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa fa-phone float-right"></i><strong>lastName:</strong>  {{user?.lastName}}</li>
+              <li class="list-group-item"><i class="fa fa-phone float-right"></i><strong>firstName:</strong>  {{user?.firstName}}</li>
+               <li class="list-group-item"><i class="fa fa-phone float-right"></i><strong>Email:</strong> {{user?.email}}</li>
+               <li class="list-group-item"><i class="fa fa-phone float-right"></i><strong>Phone:</strong> {{user?.telephone}}</li>
+               <li class="list-group-item"><i class="fa fa-phone float-right"></i><strong>Password:</strong> {{user?.passWord}}</li>
+               <li class="list-group-item"><i class="fa fa-phone float-right"></i><strong>Role:</strong> {{user?.role}}</li>
+               <li class="list-group-item"><i class="fa fa-phone float-right"></i><strong>Gender:</strong> {{user?.gender}}</li>
+               <li class="list-group-item"><i class="fa fa-phone float-right"></i><strong>Telephone:</strong> {{user?.telephone}}</li>
+               <li class="list-group-item"><i class="fa fa-phone float-right"></i><strong>userName:</strong> {{user?.userName}}</li>
+             </ul>
+            <div class="card-body" >
+               <div class="float-right btn-group btn-group-sm"  >
+                  <a     class="btn btn-primary tooltips" (click)="onOpenModal(user, 'edit')"  data-placement="top" data-original-title="Edit">Edit<i class="fa fa-pencil"></i> </a>
+                  <a     (click)="onOpenModal(user, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete">Delete<i class="fa fa-times"></i></a>
+               </div>
+            </div>
+         </div>
+      </div>
+    </div>
+     </div>
+     </div>
+     <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+             <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Add User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+             </div>
+             <div class="modal-body">
+                <form #addForm="ngForm" (ngSubmit)="onAddUser(addForm)">
+                  <div class="form-group">
+                     <label for="id">id</label>
+                     <input type="number" ngModel name="id" class="form-control" id="id" placeholder="id" required>
+                  </div>
+                <div class="form-group">
+                   <label for="lastName">lastName</label>
+                   <input type="text" ngModel name="lastName" class="form-control" id="lastName" placeholder="lastName" required>
+                </div>
+                <div class="form-group">
+                   <label for="firstName">firstName</label>
+                   <input type="text" ngModel name="firstName" class="form-control" id="firstName" placeholder="firstName" required>
+                </div>
+                <div class="form-group">
+                   <label for="userName">lastName</label>
+                   <input type="text" ngModel name="userName" class="form-control" id="userName" placeholder="userName" required>
+                </div>
+                <div class="form-group">
+                   <label for="email">Email Address</label>
+                   <input type="email" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
+                </div>
+                
+                <div class="form-group">
+                   <label for="telephone">Phone</label>
+                   <input type="number" ngModel name="telephone" class="form-control" id="telephone" placeholder="telephone" required>
+                </div>
+                
+                <div class="form-group">
+                   <label for="passWord">Password</label>
+                   <input type="text" ngModel name="PassWord" class="form-control" id="PassWord" placeholder="passWord" >
+                </div>
+                <div class="form-group">
+                   <label for="gender">gender</label>
+                   <input type="text" ngModel name="gender" class="form-control" id="gender" placeholder="gender" required>
+                </div>
+                <div class="form-group">
+                   <label for="role">Role</label>
+                   <input type="text" ngModel name="role" class="form-control" id="role" placeholder="role" required>
+                </div>
+                <div class="form-group">
+                   <label for="adress">Adress</label>
+                   <input type="text" ngModel name="adress" class="form-control" id="adress" placeholder="adress" required>
+                </div>
+                <div class="modal-footer">
+                   <button type="button" id="add-user-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                   <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+                </div>
+                </form>
+             </div>
+          </div>
+        </div>
+        </div>
+      <!-- Edit Modal -->
+ <div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="UserEditModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="updateUsereModalLabel">Edit User {{editUser?.userName}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form #editForm="ngForm">
+               <div class="form-group">
+                  <label for="id">Id</label>
+                  <input type="number" ngModel="{{editUser?.id}}" name="id" class="form-control" id="id" >
+               </div>
+               <div class="form-group">
+                  <label for="userName">UserName</label>
+                  <input type="text" ngModel="{{editUser?.userName}}" name="userName" class="form-control" id="userName" aria-describedby="emailHelp">
+               </div>
+               <div class="form-group">
+                  <label for="lastName">LastName</label>
+                  <input type="text" ngModel="{{editUser?.lastName}}" name="lastName" class="form-control" id="lastName" >
+               </div>
+               <div class="form-group">
+                  <label for="firstName">FirstName</label>
+                  <input type="text" ngModel="{{editUser?.firstName}}" name="firstName" class="form-control" id="firstName" >
+               </div>
+               <div class="form-group">
+                  <label for="passWord">Password</label>
+                  <input type="text" ngModel="{{editUser?.passWord}}" name="passWord" class="form-control" id="passWord" >
+               </div>
+              
+             
+               <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="text" ngModel="{{editUser?.email}}" name="email" class="form-control" id="email" >
+               </div>
+               
+               <div class="form-group">
+                  <label for="gender">Gender</label>
+                  <input type="text" ngModel="{{editUser?.gender}}" name="gender" class="form-control" id="gender" >
+
+               </div>
+               <div class="form-group">
+                  <label for="adress">Adress</label>
+                  <input type="text" ngModel="{{editUser?.adress}}" name="adress" class="form-control" id="adress" >
+               </div>
+               <div class="form-group">
+                  <label for="telephone">telephone</label>
+                  <input type="text" ngModel="{{editUser?.telephone}}" name="telephone" class="form-control" id="telephone" >
+               </div>
+               <div class="form-group">
+                  <label for="role">role</label>
+                  <input type="text" ngModel="{{editUser?.role}}" name="role" class="form-control" id="role">
+               </div>
+               
+               
+               
+             
+               <div class="modal-footer">
+                  <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                  <button (click)="onUpdateUser(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+ </div>
+       <div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+           <div class="modal-content">
+              <div class="modal-header">
+                 <h5 class="modal-title" id="deleteModelLabel">Delete User</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                 </button>
+              </div>
+              <div class="modal-body">
+                 <p>Are you sure you want to delete User{{deleteUser?.userName}}?</p>
+                 <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button (click)="onDeleteUser(deleteUser?.userName)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                 </div>
+              </div>
+           </div>
+        </div>
+        </div>
+        
+   
+</body>
+</html>

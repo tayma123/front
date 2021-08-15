@@ -30,7 +30,7 @@
                                     <span class="input-group-text"><i class="icon-user"></i></span>
                                   </div>
                                   <input type="text" class="form-control" placeholder="email" name="userName"
-                                    [(ngModel)]="form.userName" #userName="ngModel" required>
+                                    [(ngModel)]="authService.form.userName" #userName="ngModel" required>
                                   
                                 </div>
                                 <div class="input-group mb-4">
@@ -38,7 +38,7 @@
                                     <span class="input-group-text"><i class="icon-lock"></i></span>
                                   </div>
                                   <input type="password" class="form-control" placeholder="mot de passe" name="password"
-                                    [(ngModel)]="form.passWord" #passWord="ngModel" required minlength="6">
+                                    [(ngModel)]="authService.form.passWord" #passWord="ngModel" required minlength="6">
                                   <div *ngIf="f.submitted && passWord.invalid">
                                     <div *ngIf="passWord.errors.required">Password is required</div>
                                     <div *ngIf="passWord.errors.minlength">Password must be at least 6 characters</div>
@@ -51,9 +51,7 @@
                                   <div class="col-6 text-right">
                                     <button type="button" class="btn btn-link px-0">Mot de passe oublié?</button>
                                   </div>
-                                  <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
-                                    Login failed: {{errorMessage}}
-                                  </div>
+                                  
                                 </div>
                               </form>
                             </div>

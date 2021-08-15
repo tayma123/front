@@ -1,30 +1,25 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
-import { Observable } from 'rxjs';
- import { User1 } from '../models/user'; 
-import { UsersService } from '../users.service';
-import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
-
+import { Observable } from 'rxjs';
+import { User1 } from '../models/user'; 
+import { UsersService } from '../users.service'; 
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { FormGroup } from '@angular/forms';
-
-
-
-
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  selector: 'app-profil',
+  templateUrl: './profil.component.html',
+  styleUrls: ['./profil.component.css']
 })
-export class UsersComponent implements OnInit {
-  
+export class ProfilComponent implements OnInit {
+
+ 
   public users: User1[];
   public editUser: User1;
   public deleteUser: User1;
-
+  
+  
 
   constructor(private usersService: UsersService, private router: Router) { }
 
@@ -75,6 +70,7 @@ export class UsersComponent implements OnInit {
          }
        );
      }
+     
      public onUpdateUser(user: User1):void {
       this.usersService.updateUser(user).subscribe(
         (response: User1) => {
@@ -86,8 +82,8 @@ export class UsersComponent implements OnInit {
         }
       );
     }
-    public onDeleteUser(username: String): void {
-      this.usersService.deleteUser(username).subscribe(
+    public onDeleteUser(userName: String): void {
+      this.usersService.deleteUser(userName).subscribe(
         (response: void) => {
           console.log(response);
           this.getUsers();
@@ -97,8 +93,6 @@ export class UsersComponent implements OnInit {
         }
       );
     }
-  
+ 
     
 }
-
-

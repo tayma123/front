@@ -13,31 +13,13 @@ import { GestionUsersService } from '../espace-admin (1)/gestion-users.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  form: any = {};
-  test;
-  isLoggedIn = false;
-  isLoginFailed = false;
-  errorMessage = '';
-  roles: string[] = [];
-  private loginInfo: AuthLoginInfo;
-  USERS: User1[] = [];
-  forEdit: any = {};
-  users = [];
-  UserAdded = false;
-  UserAddedMessage = "";
-
-  page = 1;
-  pageSize = 5;
-  collectionSize;
-  isCollapsed = true;
-
+ 
   result = false;
   message = "";
   modalRef: BsModalRef;
   
 
-  constructor(private authService: AuthService,private service: GestionUsersService, private tokenStorage: TokenStorageService, private router: Router) { }
+  constructor(public authService: AuthService,private service: GestionUsersService, private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -56,48 +38,7 @@ export class LoginComponent implements OnInit {
     })
   
   }
-  onSubmit() {
-    console.log(this.form);
-
-    this.loginInfo = new AuthLoginInfo(
-      this.form.username,
-      this.form.password);
-
-    this.authService.attemptAuth(this.loginInfo).subscribe(
-      data => {
-
-        this.test = data.authorities[0];
-
-        console.log(data);
-
-
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUsername(data.userName);
-        this.tokenStorage.saveAuthorities(data.authorities);
-        this.tokenStorage.saveRole(this.test.authority)
-
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-
-        console.log(this.tokenStorage.getRole());
-      
-
-      
-      // this.router.navigate(['../admin/acceuil']);
-       this.router.navigate(['../app/espaceChef']);
-      //this.router.navigate(['../espacett/hello']);
-
-     // this.router.navigate(['../espaceclient/bienvenu']);
-
- 
-
-      },
-      error => {
-        console.log(error);
-        this.errorMessage = error.error.message;
-        this.isLoginFailed = true;
-      }
-    );
-  }
-
+ onSubmit(){
+   this.authService.onSubmit();
+}
 }

@@ -7,7 +7,6 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
 
 // Import containers
@@ -42,7 +41,11 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
-import { UsersComponent } from './users/users.component';
+import { UserComponent } from './user/user.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ProfilComponent } from './profil/profil.component';
+import { ApprennantComponent } from './apprennant/apprennant.component';
+import { MonProfilComponent } from './mon-profil/mon-profil.component';
 
 
 
@@ -64,8 +67,7 @@ import { UsersComponent } from './users/users.component';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule
-   ,BrowserModule,AppRoutingModule,CommonModule,
-    
+    ,BrowserModule,AppRoutingModule,CommonModule,
     MatIconModule,
     BrowserAnimationsModule
 
@@ -76,6 +78,11 @@ import { UsersComponent } from './users/users.component';
     LoginComponent,
     NavBarComponent,
     HomeComponent,
+     UserComponent,
+     SidebarComponent,
+     ProfilComponent,
+     ApprennantComponent,
+     MonProfilComponent
    
 
 

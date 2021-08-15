@@ -13,7 +13,13 @@
       <a class="nav-link" routerLink="/login" style="color: white">login</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/users" style="color: white">Users</a>
+      <a  class="nav-link" routerLink="/users" style="color: white">Users</a>
+    </li>
+    <li class="nav-item">
+      <a  *ngIf="authService.isLoggedIn && authService.isAdmin()" class="nav-link" routerLink="/profil" style="color: white">profil Admin</a>
+    </li>
+    <li *ngIf="authService.isLoggedIn && authService.isApprenant()" class="nav-item">
+      <a class="nav-link" routerLink="/apprenant" style="color: white">profil Apprenant</a>
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">

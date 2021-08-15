@@ -18,7 +18,7 @@ export class UsersService {
      
     }
     createData(user:User1): Observable<Object> {
-      return this.http.post(`${this.host}/user/add`, user);
+      return this.http.post(`${this.host}/addUser`, user);
     }
     
     updatedata(id: number, value: any): Observable<Object> {
@@ -38,7 +38,7 @@ export class UsersService {
     }
     public updateUser(user: User1):Observable<User1>{
         
-      return this.http.post<User1>(this.host+"/user/update", user);
+      return this.http.post<User1>(this.host+"/update", user);
   }
   public loginUser(user: User1):Observable<User1>{
         
@@ -48,7 +48,7 @@ export class UsersService {
     
        
   public deleteUser(userName: String): Observable<void> {
-    return this.http.delete<void>(`${this.host}/user/delete/${userName}`);
+    return this.http.delete<void>(`${this.host}/delete/${userName}`);
   }
   }
 

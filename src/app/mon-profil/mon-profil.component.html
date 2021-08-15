@@ -1,0 +1,128 @@
+
+ <!DOCTYPE html>
+ <html>
+ <title>W3.CSS</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+ <body>
+ 
+ <!-- Sidebar -->
+ <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+   <button onclick=" document.getElementById('mySidebar').style.display = 'none'" class="w3-bar-item w3-large"><strong >Close</strong> &times;</button>
+   <a routerLink="/" class="w3-bar-item w3-button"> <strong>Home</strong></a>
+   <a routerLink="/monProfil" class="w3-bar-item w3-button"><strong>Mes cordonnées</strong></a>
+   <a routerLink="/login" class="w3-bar-item w3-button"><strong>Mes cours</strong></a>
+   <a routerLink="/apprenant" class="w3-bar-item w3-button"><strong>Mon profil</strong></a>
+ </div>
+ 
+ <!-- Page Content -->
+ <div class="w3-teal">
+   <button class="w3-button w3-teal w3-xlarge" onclick=" document.getElementById('mySidebar').style.display = 'block'" ><img src="assets/menu.png" class="img"></button>
+ 
+ </div>
+ <div id="main-container">
+     <table class="table  table-hover table-striped">
+       <thead>
+         <th><strong>email</strong></th>
+         <th><strong>Telephone</strong></th>
+         <th><strong>Role</strong></th>
+         <th><strong>Password</strong></th>
+         <th><strong>LastName</strong></th>
+         <th><strong>FirstName</strong></th>
+         <th><strong>Gender</strong></th>
+         <th><strong>Adress</strong></th>
+         <th><strong>Statut</strong></th>
+         <th></th>
+       </thead>
+       <tr>
+         <td>{{ authService?.loggedUser }}</td>
+        
+         <td>{{ authService?.telephone }}</td>
+         <td>{{ authService?.role }}</td>
+         <td>{{ authService?.password}}</td>
+         <td>{{ authService?.lastName}}</td>
+         <td>{{ authService?.firstName}}</td>
+         <td>{{ authService?.gender}}</td>
+         <td>{{ authService?.adress}}</td>
+         <td>Active</td>
+         <td><a class="btn btn-primary tooltips" (click)="onOpenModal(authService.user, 'edit')"  data-placement="top" data-original-title="Edit">Edit </a></td>
+       </tr>
+     </table>
+   </div>
+ 
+      
+ <!-- Edit Modal -->
+ <div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="UserEditModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="updateUsereModalLabel">Edit User {{editUser?.userName}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form #editForm="ngForm">
+               <div class="form-group">
+                  <label for="id">Id</label>
+                  <input type="number" ngModel="{{editUser?.id}}" name="id" class="form-control" id="id" >
+               </div>
+               <div class="form-group">
+                  <label for="userName">UserName</label>
+                  <input type="text" ngModel="{{editUser?.userName}}" name="userName" class="form-control" id="userName" >
+               </div>
+               <div class="form-group">
+                  <label for="lastName">LastName</label>
+                  <input type="text" ngModel="{{editUser?.lastName}}" name="lastName" class="form-control" id="lastName" >
+               </div>
+               <div class="form-group">
+                  <label for="firstName">FirstName</label>
+                  <input type="text" ngModel="{{editUser?.firstName}}" name="firstName" class="form-control" id="firstName" >
+               </div>
+               <div class="form-group">
+                  <label for="passWord">Password</label>
+                  <input type="text" ngModel="{{editUser?.passWord}}" name="passWord" class="form-control" id="passWord" >
+               </div>
+              
+             
+               <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="text" ngModel="{{editUser?.email}}" name="email" class="form-control" id="email" >
+               </div>
+               
+               <div class="form-group">
+                  <label for="gender">Gender</label>
+                  <input type="text" ngModel="{{editUser?.gender}}" name="gender" class="form-control" id="gender" >
+
+               </div>
+               <div class="form-group">
+                  <label for="adress">Adress</label>
+                  <input type="text" ngModel="{{editUser?.adress}}" name="adress" class="form-control" id="adress" >
+               </div>
+               <div class="form-group">
+                  <label for="telephone">telephone</label>
+                  <input type="text" ngModel="{{editUser?.telephone}}" name="telephone" class="form-control" id="telephone" >
+               </div>
+               <div class="form-group">
+                  <label for="role">role</label>
+                  <input type="text" ngModel="{{editUser?.role}}" name="role" class="form-control" id="role">
+               </div>
+               
+               
+               
+             
+               <div class="modal-footer">
+                  <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                  <button (click)="onUpdateUser(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+ </div>
+ 
+
+    
+ </body>
+ </html>
+ 

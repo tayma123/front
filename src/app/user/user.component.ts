@@ -6,14 +6,13 @@ import { User1 } from '../models/user';
 import { UsersService } from '../users.service'; 
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../login/auth.service';
 
 @Component({
-  selector: 'app-nav-bar',
-  templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class UserComponent implements OnInit {
 
   public users: User1[];
   public editUser: User1;
@@ -21,7 +20,7 @@ export class NavBarComponent implements OnInit {
   
   
 
-  constructor(private usersService: UsersService, private router: Router,public authService: AuthService) { }
+  constructor(private usersService: UsersService, private router: Router) { }
 
   ngOnInit(){
     this.getUsers();
@@ -93,6 +92,5 @@ export class NavBarComponent implements OnInit {
         }
       );
     }
- 
-    
+  
 }
