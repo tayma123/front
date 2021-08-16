@@ -6,6 +6,7 @@ import { User1 } from '../models/user';
 import { UsersService } from '../users.service'; 
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../login/auth.service';
 
 @Component({
   selector: 'app-profil',
@@ -21,7 +22,7 @@ export class ProfilComponent implements OnInit {
   
   
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router, public authService:AuthService) { }
 
   ngOnInit(){
     this.getUsers();

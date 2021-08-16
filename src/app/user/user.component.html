@@ -1,6 +1,7 @@
 <div>
     <a class="nav-link"  (click)="onOpenModal(null, 'add')" align="right">Add User <span class="sr-only">(current)</span></a>
  </div>
+ <!--
    <div class="container" id="main-container">
    <div class="row">
     <div *ngFor="let user of users" class="col-md-6 col-xl-4">
@@ -26,7 +27,32 @@
         </div>
      </div>
    </div>
-  
+   -->
+   <div id="main-container">
+ <table class="table">
+        <thead class="thead-light">
+        <tr>
+          <th>Email</th><th>LastName</th><th>FirstName</th><th>Telephone</th><th>Gender</th><th></th><th></th><th></th> <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+          <td> {{user?.userName}}</td>
+          <td> {{user?.lastName}}</td>
+          <td> {{user?.firstName}}</td>
+          <td> {{user?.telephone}}</td>
+          <td> {{user?.gender}}</td>
+          <td> {{user?.passWord}}</td>
+          <td>{{user?.adress}}</td>
+
+          <td><a class="btn" id="delete" (click)="onOpenModal(user, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete" >Delete</a></td>
+          <td><a class="btn " id="edit" class="btn btn-primary tooltips" (click)="onOpenModal(user, 'edit')"  data-placement="top" data-original-title="Edit" >Edit</a></td>
+
+        </tr>
+        </tbody>
+
+      </table>
+ 
  <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
      <div class="modal-dialog" role="document">
        <div class="modal-content">
@@ -149,7 +175,8 @@
          </div>
       </div>
    </div>
- </div>
+</div>
+
  
      <div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
        <div class="modal-dialog" role="document">
@@ -171,5 +198,6 @@
        </div>
      </div>
      </div>
+   
   
  
