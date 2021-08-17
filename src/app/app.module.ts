@@ -13,6 +13,9 @@ import { AppComponent } from './app.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 
+
+import {MatListModule} from '@angular/material/list';
+
 import {
   AppAsideModule,
   AppBreadcrumbModule,
@@ -30,7 +33,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts'; 
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component'; 
-
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { from } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuardService } from './guards/auth-guard.service';
@@ -46,6 +49,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProfilComponent } from './profil/profil.component';
 import { ApprennantComponent } from './apprennant/apprennant.component';
 import { MonProfilComponent } from './mon-profil/mon-profil.component';
+import { CoursComponent } from './cours/cours.component';
+
+
+import { SidebarEnseignantComponent } from './sidebar-enseignant/sidebar-enseignant.component';
+import { FormationComponent } from './formation/formation.component';
+import { EnseignantComponent } from './enseignant/enseignant.component';
+import { MessagesComponent } from './messages/messages.component';
+
 
 
 
@@ -69,7 +80,7 @@ import { MonProfilComponent } from './mon-profil/mon-profil.component';
     ChartsModule
     ,BrowserModule,AppRoutingModule,CommonModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,MatSidenavModule,MatListModule
 
 
   ],
@@ -82,7 +93,17 @@ import { MonProfilComponent } from './mon-profil/mon-profil.component';
      SidebarComponent,
      ProfilComponent,
      ApprennantComponent,
-     MonProfilComponent
+     MonProfilComponent,
+     CoursComponent,
+    
+     SidebarEnseignantComponent,
+    
+     FormationComponent,
+    
+     EnseignantComponent,
+    
+     MessagesComponent
+     
    
 
 

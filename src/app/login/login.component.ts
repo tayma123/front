@@ -6,7 +6,7 @@ import { AuthLoginInfo } from './login-info';
 import { Router } from '@angular/router';
 import { User1 } from '../models/user'; 
 import {NgForm} from '@angular/forms';
-import { GestionUsersService } from '../espace-admin (1)/gestion-users.service'; 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   modalRef: BsModalRef;
   
 
-  constructor(public authService: AuthService,private service: GestionUsersService, private tokenStorage: TokenStorageService, private router: Router) { }
+  constructor(public authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -29,11 +29,11 @@ export class LoginComponent implements OnInit {
 
     console.log(user);
   
-    this.service.inscritUser(user).subscribe(data => {
+    this.authService.inscritUser(user).subscribe(data => {
       this.modalRef.hide();
      
       this.result = true;
-      this.message = "votre cv a été bien envoyé avec succés"
+      this.message = "vous recevez un email de confirmation sur votre email "
   
     })
   

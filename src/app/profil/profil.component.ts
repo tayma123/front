@@ -1,9 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { UsersService } from '../users.service'; 
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { User1 } from '../models/user'; 
-import { UsersService } from '../users.service'; 
+
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../login/auth.service';

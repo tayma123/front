@@ -7,6 +7,7 @@ import { UsersService } from '../users.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../login/auth.service';
+import { TokenStorageService } from '../login/token-storage.service'; 
 
 @Component({
   selector: 'app-nav-bar',
@@ -21,7 +22,7 @@ export class NavBarComponent implements OnInit {
   
   
 
-  constructor(private usersService: UsersService, private router: Router,public authService: AuthService) { }
+  constructor(private usersService: UsersService, private router: Router,public authService: AuthService,private storageService: TokenStorageService) { }
 
   ngOnInit(){
     this.getUsers();
@@ -94,5 +95,12 @@ export class NavBarComponent implements OnInit {
       );
     }
  
-    
+     
+  logout() {
+    this.storageService.signOut();
+    this.authService.ResetForm();
+    this.router.navigate(['/login']);
+
+  }
+
 }

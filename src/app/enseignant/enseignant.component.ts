@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { User1 } from '../models/user'; 
+import { AuthService } from '../login/auth.service';
+import { User1 } from '../models/user';
+import { HttpErrorResponse } from '@angular/common/http';
 import { UsersService } from '../users.service'; 
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
-import { AuthService } from '../login/auth.service';
-import { NgForm } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+
 @Component({
-  selector: 'app-mon-profil',
-  templateUrl: './mon-profil.component.html',
-  styleUrls: ['./mon-profil.component.css']
+  selector: 'app-enseignant',
+  templateUrl: './enseignant.component.html',
+  styleUrls: ['./enseignant.component.css']
 })
-export class MonProfilComponent implements OnInit {
+export class EnseignantComponent implements OnInit {
 
   public editUser: User1;
-  public deleteUser: User1;
   
   constructor(private usersService: UsersService, private router: Router,public authService: AuthService) { }
  
@@ -33,10 +31,7 @@ export class MonProfilComponent implements OnInit {
       this.editUser = user;
       button.setAttribute('data-target', '#updateUserModal');
     }
-    if (mode === 'delete') {
-      this.deleteUser = user;
-      button.setAttribute('data-target', '#deleteUserModal');
-    }
+
     container.appendChild(button);
     button.click();
   }

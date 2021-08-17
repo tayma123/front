@@ -1,21 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../login/auth.service';
 import { User1 } from '../models/user';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UsersService } from '../users.service'; 
 
-
 @Component({
-  selector: 'app-apprennant',
-  templateUrl: './apprennant.component.html',
-  styleUrls: ['./apprennant.component.css']
+  selector: 'app-cours',
+  templateUrl: './cours.component.html',
+  styleUrls: ['./cours.component.css']
 })
-export class ApprennantComponent implements OnInit {
-
-  
-
+export class CoursComponent implements OnInit {
   public users: User1[];
-  constructor( public usersService:UsersService,public authService: AuthService) { }
+  constructor( public usersService:UsersService) { }
 
   ngOnInit(){
     this.getUsers();
@@ -31,5 +26,4 @@ export class ApprennantComponent implements OnInit {
         });
       }
 
- 
 }

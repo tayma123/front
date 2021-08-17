@@ -113,6 +113,9 @@ export class AuthService {
         this.gender=user.gender;
         this.user=user;
         this.id=user.id;
+        this.form.userName=null;
+      this.form.passWord=null;
+        
        })
 
       },
@@ -129,11 +132,11 @@ export class AuthService {
   }
   
   
-  /*logout() {
+  logout() {
     this.storageService.signOut();
-    this.router.navigate['../login'];
+    this.router.navigate['/login'];
 
-  }*/
+  }
   isAdmin():Boolean{
     console.log("role "+this.role);
     if (!this.role) //this.roles== undefiened
@@ -146,4 +149,20 @@ export class AuthService {
         return false;
     return (this.role.indexOf('APPRENANT') >-1) ;
     }
+    isFormateur():Boolean{
+      console.log("role "+this.role);
+      if (!this.role) //this.roles== undefiened
+          return false;
+      return (this.role.indexOf('FORMATEUR') >-1) ;
+      }
+    ResetForm() {
+      this.form.userName=null;
+      this.form.passWord=null;
+      this.isLoggedIn=false;
+     this.loggedUser=null;
+  }
+  inscritUser(user): Observable<any> {
+    return this.http.post("http://localhost:8080/auth/signUp", user);
+  }
+  
 }

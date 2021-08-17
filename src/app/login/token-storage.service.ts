@@ -17,7 +17,9 @@ export class TokenStorageService {
 
   signOut() {
     window.sessionStorage.clear();
+    
   }
+  
 
   public setIsAuthenticated(value: string) {
 

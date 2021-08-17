@@ -13,21 +13,54 @@
       <a class="nav-link" routerLink="/login" style="color: white">login</a>
     </li>
     <li class="nav-item">
-      <a  class="nav-link" routerLink="/users" style="color: white">Users</a>
+      <a *ngIf="authService.isLoggedIn && authService.isAdmin()" class="nav-link" routerLink="/users" style="color: white">Users</a>
     </li>
     <li class="nav-item">
       <a  *ngIf="authService.isLoggedIn && authService.isAdmin()" class="nav-link" routerLink="/profil" style="color: white">profil Admin</a>
     </li>
     <li *ngIf="authService.isLoggedIn && authService.isApprenant()" class="nav-item">
-      <a class="nav-link" routerLink="/apprenant" style="color: white">profil Apprenant</a>
+      <a class="nav-link" routerLink="/apprenant" style="color: white">Mon Profil</a>
+    </li>
+    <li  class="nav-item">
+      <a class="nav-link" routerLink="/cours" style="color: white" *ngIf="authService.isLoggedIn && authService.isApprenant()">Cours</a>
+    </li>
+    <li  class="nav-item">
+      <a *ngIf="authService.isLoggedIn && authService.isFormateur()" class="nav-link" routerLink="/enseignant" style="color: white">Mon Profil</a>
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">
-    
+    <li>
+      <a style="color: white" class="nav-link">{{ authService.loggedUser }}</a>
+    </li>
     <li class="nav-item dropdown">
-    
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbardrop"
+        data-toggle="dropdown"
+        style="color: white"
+      >
+        Connexion
+      </a>
       <div class="dropdown-menu">
-       
+        <a
+          *ngIf="!authService.isLoggedIn"
+          class="dropdown-item"
+          routerLink="login"
+          >login</a
+        >
+        <a
+          *ngIf="authService.isLoggedIn"
+          class="dropdown-item"
+          (click)="logout()"
+          >logout</a
+        >
+        <a *ngIf="authService.isLoggedIn && authService.isApprenant()" class="dropdown-item" routerLink="/apprenant"
+          >Profil</a
+        >
+        <a *ngIf="authService.isLoggedIn && authService.isAdmin()" class="dropdown-item" routerLink="/profil"
+          >Profil</a
+        >
       </div>
     </li>
   </ul>

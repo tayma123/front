@@ -45,7 +45,7 @@
          <td>{{ authService?.gender}}</td>
          <td>{{ authService?.adress}}</td>
          <td>Active</td>
-         <td><a class="btn btn-primary tooltips" (click)="onOpenModal(authService.user, 'edit')"  data-placement="top" data-original-title="Edit">Edit </a></td>
+         <td><a class="btn btn-primary tooltips" id="edit"(click)="onOpenModal(authService.user, 'edit')"  data-placement="top" data-original-title="Edit">Edit </a></td>
        </tr>
      </table>
    </div>

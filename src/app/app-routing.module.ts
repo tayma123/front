@@ -10,10 +10,23 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProfilComponent } from './profil/profil.component'; 
 import { ApprennantComponent } from './apprennant/apprennant.component';
 import { MonProfilComponent } from './mon-profil/mon-profil.component';
+import { CoursComponent } from './cours/cours.component';
+import { EnseignantComponent } from './enseignant/enseignant.component';
+import { FormationComponent } from './formation/formation.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 const routes: Routes = [
-{ path: "", component:HomeComponent},{ path: "login", component:LoginComponent},{ path: "users", component:UserComponent},{ path: "profil", component:ProfilComponent},{ path: "apprenant", component:ApprennantComponent},{ path: "monProfil", component:MonProfilComponent}
+{ path: "", component:HomeComponent}
+,{ path: "login", component:LoginComponent}
+,{ path: "users", component:UserComponent},
+{ path: "profil", component:ProfilComponent},
+{ path: "apprenant", component:ApprennantComponent},
+{ path: "monProfil", component:MonProfilComponent},
+{ path: "cours", component:CoursComponent},
+{ path: "enseignant", component:EnseignantComponent},
+{ path: "formation", component:FormationComponent},
+{ path: "messages", component:MessagesComponent}
 ];
 
 @NgModule({
