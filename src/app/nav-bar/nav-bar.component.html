@@ -13,10 +13,10 @@
       <a class="nav-link" routerLink="/login" style="color: white">login</a>
     </li>
     <li class="nav-item">
-      <a *ngIf="authService.isLoggedIn && authService.isAdmin()" class="nav-link" routerLink="/users" style="color: white">Users</a>
+      <a  class="nav-link" routerLink="/users" style="color: white">Users</a>
     </li>
     <li class="nav-item">
-      <a  *ngIf="authService.isLoggedIn && authService.isAdmin()" class="nav-link" routerLink="/profil" style="color: white">profil Admin</a>
+      <a   class="nav-link" routerLink="/profil" style="color: white">profil Admin</a>
     </li>
     <li *ngIf="authService.isLoggedIn && authService.isApprenant()" class="nav-item">
       <a class="nav-link" routerLink="/apprenant" style="color: white">Mon Profil</a>
@@ -26,6 +26,9 @@
     </li>
     <li  class="nav-item">
       <a *ngIf="authService.isLoggedIn && authService.isFormateur()" class="nav-link" routerLink="/enseignant" style="color: white">Mon Profil</a>
+    </li>
+    <li  class="nav-item">
+      <a class="nav-link" routerLink="/categories" style="color: white" >Catégories</a>
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">

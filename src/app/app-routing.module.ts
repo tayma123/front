@@ -14,6 +14,7 @@ import { CoursComponent } from './cours/cours.component';
 import { EnseignantComponent } from './enseignant/enseignant.component';
 import { FormationComponent } from './formation/formation.component';
 import { MessagesComponent } from './messages/messages.component';
+import { CategorieComponent } from './categorie/categorie.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
 { path: "cours", component:CoursComponent},
 { path: "enseignant", component:EnseignantComponent},
 { path: "formation", component:FormationComponent},
-{ path: "messages", component:MessagesComponent}
+{ path: "messages", component:MessagesComponent},
+{ path: "categories", component:CategorieComponent}
 ];
 
 @NgModule({

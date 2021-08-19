@@ -132,6 +132,7 @@ export class AuthService {
   }
   
   
+  
   logout() {
     this.storageService.signOut();
     this.router.navigate['/login'];

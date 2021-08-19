@@ -56,6 +56,7 @@ import { SidebarEnseignantComponent } from './sidebar-enseignant/sidebar-enseign
 import { FormationComponent } from './formation/formation.component';
 import { EnseignantComponent } from './enseignant/enseignant.component';
 import { MessagesComponent } from './messages/messages.component';
+import { CategorieComponent } from './categorie/categorie.component';
 
 
 
@@ -102,7 +103,9 @@ import { MessagesComponent } from './messages/messages.component';
     
      EnseignantComponent,
     
-     MessagesComponent
+     MessagesComponent,
+    
+     CategorieComponent
      
    
 

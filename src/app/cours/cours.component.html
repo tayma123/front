@@ -4,16 +4,16 @@
 <br>
 <br>
 <div class="row"  style="margin-left: 200px;"  >
-<div   class="owl-item cloned" style="width: 350px; margin-right: 30px;" *ngFor="let user of users"  >
+<div   class="owl-item cloned" style="width: 350px; margin-right: 30px;" *ngFor="let cour of cours"  >
     <div class="single_course" >
         <div class="course_content"   >
             <span class="price">free</span>
-            <span class="tag mb-4 d-inline-block">Titre</span>
+            <span class="tag mb-4 d-inline-block">{{cour?.titre}}</span>
             <h4 class="mb-3">
                 <a href="#">Le lien vers le cours</a>
             </h4>
             <p>
-                {{user?.userName}}
+                <strong>Le formateur   :   </strong>{{cour?.userName}}
             </p>
         </div>
     </div>

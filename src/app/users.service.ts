@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Cours } from './models/cours';
 import { User1 } from './models/user';
 
 @Injectable({
@@ -50,5 +51,11 @@ export class UsersService {
   public deleteUser(userName: String): Observable<void> {
     return this.http.delete<void>(`${this.host}/delete/${userName}`);
   }
+
+
+  public getCours():Observable<Cours[]>{
+        
+    return this.http.get<Cours[]>("http://localhost:8080/cours/all");
+}
   }
 
