@@ -1,41 +1,27 @@
 <div class="container pb-5 mb-sm-2">
   <!-- Categories grid-->
-  <div class="row no-gutters">
+  <div class="row no-gutters" >
     <!-- Category-->
-    <div class="col-lg-3 col-sm-4 col-6 category-card border border-collapse" *ngFor="let categorie of categories"  >
-      <div class="card border-0">
-        <a class="d-block" href="#"
+    <div class="col-lg-3 col-sm-4 col-6 category-card border border-collapse"  *ngFor="let categorie of categories"  >
+      <div class="card border-0" >
+        <a class="d-block" href="#" 
           ><img
             class="d-block"
             src="https://via.placeholder.com/340x232/FF8C00/000000"
            
         /></a>
-        <div class="card-body pb-2">
-          <h2 class="h6 mb-2">{{categorie?.nomC}}</h2>
-          <span class="d-block mb-3 font-size-xs text-muted"
-            >For free
-            </span
-          >
-          <div class="list-group list-group-flush font-size-sm" *ngFor="let cours of getCoursByCategorie(categorie.idCt)" >
-           <a class="list-group-item list-group-item-action" href="#"
-              >{{cours?.titre}}<svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-chevron-right ml-1"
-                style="width: 0.875rem; height: 0.875rem"
-              >
-               </svg></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Category-->
+        
+        
   </div>
+  <div class="card-body pb-2">
+    <h2 class="h6 mb-2">{{categorie?.nomC}}</h2>
+    <span class="d-block mb-3 font-size-xs text-muted"  (click)="getCoursByCategorie(categorie.idCt)">For free</span>
+  </div>
+  <table class="table table-primary table-hover table-striped"  *ngFor="let course of courses">
+  <tr >
+    <td> {{course.titre }}</td>
+  </tr>
+</table>
+</div>
+</div>
 </div>

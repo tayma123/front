@@ -13,7 +13,7 @@ import { Cours } from '../models/cours';
 export class CategorieComponent implements OnInit {
   public categories: Catégorie[];
   public courses:Cours[];
-  public categorie:Catégorie;
+
   constructor(public catégorieService:CategorieService) { }
 
   ngOnInit(): void {
